@@ -1,7 +1,7 @@
 # Flutter Learn
 
 A new Flutter project.
-This is a learing project which has so many explanation which I can foget in the future.
+This is a learing project which has so many explanation for myself in the future. I may end up with so many things which can easily forget all of them, that's why I created this to remember what things that should I remember.
 
 ## Getting Started
 
