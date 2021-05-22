@@ -1,6 +1,7 @@
-# img_pict
+# Flutter Learn
 
 A new Flutter project.
+This is a learing project which has so many explanation which I can foget in the future.
 
 ## Getting Started
 
