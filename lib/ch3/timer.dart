@@ -14,13 +14,22 @@ class CountDownTimer {
   Timer? timer;
   Duration? _time;
   Duration? _fullTime;
+  int shortBreak = 5;
+  int longBreak = 20;
 
   /// The work time that we need to change later on.
-  int work = 30;
+  int work = 13;
 
   void startWork() {
     _radius = 1;
     _time = Duration(minutes: this.work, seconds: 0);
+    _fullTime = _time;
+  }
+
+  ///For Short and Long periode
+  void startBreak(bool isShort) {
+    _radius = 1;
+    _time = Duration(minutes: (isShort) ? shortBreak : longBreak, seconds: 0);
     _fullTime = _time;
   }
 

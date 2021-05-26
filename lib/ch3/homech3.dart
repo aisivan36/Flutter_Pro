@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-/// An import user or third packages
+/// An user's import or third party's packages
 import 'package:img_pict/ch3/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:img_pict/ch3/timer.dart';
 import 'package:img_pict/ch3/timermodel.dart';
+import 'package:img_pict/ch3/settings.dart';
 
 ///
 ///The [Padding]
@@ -16,12 +17,37 @@ class HomeCh3 extends StatelessWidget {
 
   final CountDownTimer timer = CountDownTimer();
 
+  void goToSettings(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return SettingsScreen();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final menuItems = <PopupMenuItem<String>>[];
+    menuItems.add(
+      PopupMenuItem(
+        child: Text(
+          'Settings',
+        ),
+        value: 'Settings',
+      ),
+    );
     timer.startWork();
     return Scaffold(
       appBar: AppBar(
         title: Text('My Work TImer'),
+        actions: [
+          PopupMenuButton<String>(itemBuilder: (context) {
+            return menuItems;
+          })
+        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -40,8 +66,7 @@ class HomeCh3 extends StatelessWidget {
                       child: ProductivityButton(
                         color: Color(0xff009688),
                         text: "Work",
-                        onPressed: emptyMethod,
-                        size: null,
+                        onPressed: () => timer.startWork,
                       ),
                     ),
                     Padding(
@@ -51,8 +76,7 @@ class HomeCh3 extends StatelessWidget {
                       child: ProductivityButton(
                         color: Color(0xff607D8B),
                         text: "Short Break",
-                        onPressed: emptyMethod,
-                        size: null,
+                        onPressed: () => timer.shortBreak,
                       ),
                     ),
                     Padding(
@@ -62,8 +86,7 @@ class HomeCh3 extends StatelessWidget {
                       child: ProductivityButton(
                         color: Color(0xff455A64),
                         text: "Long Break",
-                        onPressed: emptyMethod,
-                        size: null,
+                        onPressed: () => timer.longBreak,
                       ),
                     ),
                     Padding(
