@@ -17,7 +17,7 @@ class ProductivityButton extends StatelessWidget {
     @required this.color,
     @required this.text,
     @required this.onPressed,
-    @required this.size,
+    this.size,
   });
 ///// =============The end of the explanation.================
 
