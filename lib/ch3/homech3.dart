@@ -44,9 +44,16 @@ class HomeCh3 extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Work TImer'),
         actions: [
-          PopupMenuButton<String>(itemBuilder: (context) {
-            return menuItems;
-          })
+          PopupMenuButton<String>(
+            itemBuilder: (context) {
+              return menuItems;
+            },
+            onSelected: (value) {
+              if (value == 'Settings') {
+                goToSettings(context);
+              }
+            },
+          ),
         ],
       ),
       body: LayoutBuilder(
@@ -104,7 +111,7 @@ class HomeCh3 extends StatelessWidget {
                 stream: timer.stream(),
                 builder: (context, snapshot) {
                   final TimerModel timer = ((snapshot.data == '00:00')
-                      ? TimerModel('00:00', 1)
+                      ? TimerModel(time: '00:00', percent: 1)
                       : snapshot.data) as TimerModel;
                   return Padding(
                     padding: const EdgeInsets.all(30.0),

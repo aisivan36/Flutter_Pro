@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // import 'timermodel.dart';
 import 'package:img_pict/ch3/timermodel.dart';
@@ -17,10 +18,23 @@ class CountDownTimer {
   int shortBreak = 5;
   int longBreak = 20;
 
+  Future readSettings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    work =
+        prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime') as int;
+    shortBreak = prefs.getInt('shortBreak') == null
+        ? 30
+        : prefs.getInt('shortBreak') as int;
+    longBreak = prefs.getInt('longBreak') == null
+        ? 30
+        : prefs.getInt('longBreak') as int;
+  }
+
   /// The work time that we need to change later on.
   int work = 13;
 
-  void startWork() {
+  void startWork() async {
+    await readSettings();
     _radius = 1;
     _time = Duration(minutes: this.work, seconds: 0);
     _fullTime = _time;
@@ -97,7 +111,7 @@ class CountDownTimer {
           }
         }
         time = returnTime(_time!);
-        return TimerModel(time, _radius);
+        return TimerModel(time: time, percent: _radius);
       },
     );
   }
