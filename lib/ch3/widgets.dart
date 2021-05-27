@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 typedef CallbackSetting = void Function(String, int);
 
 class ProductivityButton extends StatelessWidget {
-  final Color? color;
-  final String? text;
-  final double? size;
-  final VoidCallback? onPressed;
+  final Color color;
+  final String text;
+  final double size;
+  final VoidCallback onPressed;
 
   /// A brief explanation of this.
   /// You may have noticed that the parameters are included in curly brackets [({})] and have a [@required] annotation. This is because we are using named parameters here.
@@ -17,19 +17,21 @@ class ProductivityButton extends StatelessWidget {
   /// you can use the syntax [ProductivityButton (color: Colors.blueAccent, text: 'Hello World', onPressed: doSomething, size: 150)].
   /// As named parameters are referenced by name, they can be used in any order. Named parameters are optional,
   ///  but you can annotate them with the @required annotation to indicate that the parameter is mandatory.
+  ///
   ProductivityButton({
-    @required this.color,
-    @required this.text,
-    @required this.onPressed,
-    this.size,
-  });
+    required this.color,
+    required this.text,
+    required this.onPressed,
+    required this.size,
+  }) : super();
+
 ///// =============The end of the explanation.================
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       child: Text(
-        this.text!,
+        this.text,
         style: TextStyle(color: Colors.white),
       ),
       onPressed: this.onPressed,

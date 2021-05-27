@@ -71,6 +71,7 @@ class HomeCh3 extends StatelessWidget {
                     ),
                     Expanded(
                       child: ProductivityButton(
+                        size: defaultPadding,
                         color: Color(0xff009688),
                         text: "Work",
                         onPressed: () => timer.startWork,
@@ -81,6 +82,7 @@ class HomeCh3 extends StatelessWidget {
                     ),
                     Expanded(
                       child: ProductivityButton(
+                        size: defaultPadding,
                         color: Color(0xff607D8B),
                         text: "Short Break",
                         onPressed: () => timer.shortBreak,
@@ -91,6 +93,7 @@ class HomeCh3 extends StatelessWidget {
                     ),
                     Expanded(
                       child: ProductivityButton(
+                        size: defaultPadding,
                         color: Color(0xff455A64),
                         text: "Long Break",
                         onPressed: () => timer.longBreak,
@@ -143,6 +146,7 @@ class HomeCh3 extends StatelessWidget {
                     ),
                     Expanded(
                       child: ProductivityButton(
+                        size: defaultPadding,
                         color: Color(0xff212121),
                         text: 'Stop',
                         onPressed: () => timer.stopTimer(),
@@ -153,6 +157,7 @@ class HomeCh3 extends StatelessWidget {
                     ),
                     Expanded(
                       child: ProductivityButton(
+                        size: defaultPadding,
                         color: Color(0xff009688),
                         text: 'Restart',
                         onPressed: () => timer.startTimer(),

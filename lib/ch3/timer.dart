@@ -19,15 +19,13 @@ class CountDownTimer {
   int longBreak = 20;
 
   Future readSettings() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     work =
         prefs.getInt('workTime') == null ? 30 : prefs.getInt('workTime') as int;
-    shortBreak = prefs.getInt('shortBreak') == null
-        ? 30
-        : prefs.getInt('shortBreak') as int;
-    longBreak = prefs.getInt('longBreak') == null
-        ? 30
-        : prefs.getInt('longBreak') as int;
+    shortBreak =
+        (prefs.getInt('shortBreak') == null ? 30 : prefs.getInt('shortBreak'))!;
+    longBreak =
+        (prefs.getInt('longBreak') == null ? 30 : prefs.getInt('longBreak'))!;
   }
 
   /// The work time that we need to change later on.

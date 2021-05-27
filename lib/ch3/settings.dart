@@ -27,10 +27,19 @@ class _SettingsState extends State<Settings> {
   TextEditingController? txtShort;
   TextEditingController? txtLong;
 
+  static const String WORKTIME = "workTime";
+  static const String SHORTBREAK = "shortBreak";
+  static const String LONGBREAK = "longBreak";
+  int? workTime;
+  int? shortBreak;
+  int? longBreak;
+
+  late SharedPreferences prefs;
+
   readSettings() async {
     prefs = await SharedPreferences.getInstance();
     int? workTime = prefs.getInt(WORKTIME);
-    if (workTime == null) {
+    if (workTime != null) {
       await prefs.setInt(WORKTIME, int.parse('30'));
     }
     int? shortBreak = prefs.getInt(SHORTBREAK);
@@ -42,10 +51,19 @@ class _SettingsState extends State<Settings> {
       await prefs.setInt(LONGBREAK, int.parse('20'));
     }
     setState(() {
-      txtWork?.text = workTime.toString();
+      txtWork?.text = workTime as String;
       txtShort?.text = shortBreak.toString();
       txtLong?.text = longBreak.toString();
     });
+  }
+
+  @override
+  void initState() {
+    TextEditingController? txtWork = TextEditingController();
+    TextEditingController? txtShort = TextEditingController();
+    TextEditingController? txtLong = TextEditingController();
+    readSettings();
+    super.initState();
   }
 
   void updateSetting(String key, int value) {
@@ -85,24 +103,6 @@ class _SettingsState extends State<Settings> {
         }
     }
   }
-
-  // @override
-  // void initState() {
-  //   TextEditingController? txtWork = TextEditingController();
-  //   TextEditingController? txtShort = TextEditingController();
-  //   TextEditingController? txtLong = TextEditingController();
-  //   readSettings();
-  //   super.initState();
-  // }
-
-  static const String WORKTIME = "workTime";
-  static const String SHORTBREAK = "shortBreak";
-  static const String LONGBREAK = "longBreak";
-  int? workTime;
-  int? shortBreak;
-  int? longBreak;
-
-  late SharedPreferences prefs;
 
   @override
   Widget build(BuildContext context) {
