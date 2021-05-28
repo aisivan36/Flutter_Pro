@@ -59,9 +59,9 @@ class _SettingsState extends State<Settings> {
 
   @override
   void initState() {
-    TextEditingController? txtWork = TextEditingController();
-    TextEditingController? txtShort = TextEditingController();
-    TextEditingController? txtLong = TextEditingController();
+    // TextEditingController? txtWork = TextEditingController();
+    // TextEditingController? txtShort = TextEditingController();
+    // TextEditingController? txtLong = TextEditingController();
     readSettings();
     super.initState();
   }
